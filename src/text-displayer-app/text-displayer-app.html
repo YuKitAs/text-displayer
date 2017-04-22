@@ -1,0 +1,28 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
+
+<dom-module id="text-displayer-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'text-displayer-app',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'text-displayer-app',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

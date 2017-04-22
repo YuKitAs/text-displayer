@@ -1,0 +1,6 @@
+{
+  "name": "text-displayer",
+  "short_name": "text-displayer",
+  "start_url": "/",
+  "display": "standalone"
+}
