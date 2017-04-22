@@ -8,21 +8,24 @@
                 display: block;
             }
 
-            h2, div {
-                color: #ffffff;
+            header {
+                font-family: Ubuntu;
+                color: whitesmoke;
             }
 
             .flex-container {
                 display: -webkit-flex;
                 display: flex;
+                flex-wrap: nowrap;
             }
 
             .flex-item {
                 margin: 150px;
             }
 
-            paper-input {
-                max-width: 200px;
+            paper-textarea {
+                width: 300px;
+                max-width: 300px;
                 --paper-input-container-input-color: white;
                 --paper-input-container-label: {
                     text-transform: uppercase;
@@ -33,19 +36,22 @@
                 display: flex;
                 background-color: #00d6b2;
                 width: 400px;
+                max-width: 400px;
                 height: 400px;
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
+                word-break: break-all;
             }
 
         </style>
 
-        <h2>[[title]]</h2>
+        <header><h2>[[title]]</h2></header>
 
         <div class="flex-container">
             <div class="flex-item">
-                <paper-input label="Input" value="{{inputText::change}}" char-counter maxlength="100"></paper-input>
+                <paper-textarea label="Say something" value="{{inputText::change}}" char-counter
+                                maxlength="100"></paper-textarea>
                 <br>
             </div>
             <div class="flex-item" id="text-item">
