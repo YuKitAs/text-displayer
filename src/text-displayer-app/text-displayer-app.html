@@ -2,27 +2,74 @@
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 
 <dom-module id="text-displayer-app">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]</h2>
-  </template>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
 
-  <script>
-    Polymer({
+            h2, div {
+                color: #ffffff;
+            }
 
-      is: 'text-displayer-app',
+            .flex-container {
+                display: -webkit-flex;
+                display: flex;
+            }
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'text-displayer-app',
-        },
-      },
+            .flex-item {
+                margin: 150px;
+            }
 
-    });
-  </script>
+            paper-input {
+                max-width: 200px;
+                --paper-input-container-input-color: white;
+                --paper-input-container-label: {
+                    text-transform: uppercase;
+                }
+            }
+
+            #text-item {
+                display: flex;
+                background-color: #00d6b2;
+                width: 400px;
+                height: 400px;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+
+        </style>
+
+        <h2>[[title]]</h2>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <paper-input label="Input" value="{{inputText::change}}" char-counter maxlength="100"></paper-input>
+                <br>
+            </div>
+            <div class="flex-item" id="text-item">
+                <div>[[inputText]]</div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'text-displayer-app',
+
+            properties: {
+                title: {
+                    type: String,
+                    value: 'Text Displayer'
+                },
+                inputText: {
+                    type: String,
+                    notify: true,
+                    value: null
+                }
+            }
+        });
+    </script>
 </dom-module>
