@@ -1,4 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 
 <dom-module id="text-displayer-app">
@@ -8,7 +9,7 @@
                 display: block;
             }
 
-            header {
+            header, div {
                 font-family: Ubuntu;
                 color: whitesmoke;
             }
@@ -32,6 +33,23 @@
                 }
             }
 
+            paper-dropdown-menu.custom {
+                width: 150px;
+                height: auto;
+
+                --paper-input-container-input: {
+                    color: white;
+                };
+
+                --paper-dropdown-menu-input: {
+                    text-transform: uppercase;
+                }
+            }
+
+            paper-slider {
+                width: 250px;
+            }
+
             #text-item {
                 display: flex;
                 background-color: #00d6b2;
@@ -51,11 +69,24 @@
         <div class="flex-container">
             <div class="flex-item">
                 <paper-textarea label="Say something" value="{{inputText::change}}" char-counter
-                                maxlength="100"></paper-textarea>
+                                maxlength="100">
+                </paper-textarea>
+                <br>
+                <paper-dropdown-menu class="custom" label="Font" selected-item-label="{{font}}">
+                    <paper-listbox class="dropdown-content">
+                        <paper-item>font1</paper-item>
+                        <paper-item>font2</paper-item>
+                        <paper-item>font3</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
+                <p></p>
+                SIZE:
+                <paper-slider max="50" value="14" editable></paper-slider>
                 <br>
             </div>
             <div class="flex-item" id="text-item">
                 <div>[[inputText]]</div>
+                <div>You chose: [[font]]</div>
             </div>
         </div>
     </template>
@@ -71,6 +102,11 @@
                     value: 'Text Displayer'
                 },
                 inputText: {
+                    type: String,
+                    notify: true,
+                    value: null
+                },
+                font: {
                     type: String,
                     notify: true,
                     value: null
