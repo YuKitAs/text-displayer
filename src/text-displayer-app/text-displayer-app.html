@@ -121,15 +121,15 @@
                 <p></p>
                 <div class="label">Style:</div>
                 <div id="checkbox">
-                    <paper-checkbox noink>bold</paper-checkbox>
-                    <paper-checkbox noink>italic</paper-checkbox>
+                    <paper-checkbox id="bold" noink>bold</paper-checkbox>
+                    <paper-checkbox id="italic" noink>italic</paper-checkbox>
                 </div>
                 <p></p>
                 <div class="label">Text color:</div>
                 <div class="color-picker">
                     <paper-swatch-picker color="white"></paper-swatch-picker>
                 </div>
-                <p></p>
+                <br>
                 <div class="label">Background color:</div>
                 <div class="color-picker">
                     <paper-swatch-picker color="#03a9f4"></paper-swatch-picker>
@@ -165,11 +165,29 @@
             }
         });
 
-        document.addEventListener('WebComponentsReady', function () {
-            var size = document.querySelector('#size');
-            size.addEventListener('value-change', function () {
-                document.querySelector("#text-item").setAttribute("style", "font-size:" + size.value + "px");
+        document.addEventListener("WebComponentsReady", function () {
+            var size = document.querySelector("#size");
+            size.addEventListener("value-change", function () {
+                setStyle();
+            });
+
+            var bold = document.querySelector("#bold");
+            bold.addEventListener("change", function () {
+                setStyle();
+            });
+
+            var italic = document.querySelector("#italic");
+            italic.addEventListener("change", function () {
+                setStyle();
             });
         });
+
+        function setStyle() {
+            var textItem = document.querySelector("#text-item");
+
+            var fw = bold.checked ? "bold" : "normal";
+            var fs = italic.checked ? "italic" : "normal";
+            textItem.setAttribute("style", "font-size:" + size.value + "px;" + "font-weight:" + fw + "; font-style:" + fs);
+        }
     </script>
 </dom-module>
