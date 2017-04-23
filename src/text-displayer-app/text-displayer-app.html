@@ -127,24 +127,22 @@
                 <p></p>
                 <div class="label">Text color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker color="white"></paper-swatch-picker>
+                    <paper-swatch-picker id="text-color" color="white"></paper-swatch-picker>
                 </div>
                 <br>
                 <div class="label">Background color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker color="#03a9f4"></paper-swatch-picker>
+                    <paper-swatch-picker id="bg-color" color="#03a9f4"></paper-swatch-picker>
                 </div>
             </div>
             <div class="flex-item" id="text-item">
-                <div>[[inputText]]</div>
-                <div>You chose: [[font]]</div>
+                [[inputText]]<br> You chose: [[font]]
             </div>
         </div>
     </template>
 
     <script>
         Polymer({
-
             is: 'text-displayer-app',
 
             properties: {
@@ -180,6 +178,14 @@
             italic.addEventListener("change", function () {
                 setStyle();
             });
+
+            document.querySelector("#text-color").addEventListener("color-picker-selected", function () {
+                setStyle();
+            });
+
+            document.querySelector("#bg-color").addEventListener("color-picker-selected", function () {
+                setStyle();
+            });
         });
 
         function setStyle() {
@@ -187,7 +193,10 @@
 
             var fw = bold.checked ? "bold" : "normal";
             var fs = italic.checked ? "italic" : "normal";
-            textItem.setAttribute("style", "font-size:" + size.value + "px;" + "font-weight:" + fw + "; font-style:" + fs);
+
+            textItem.setAttribute("style", "font-size:" + size.value + "px;" + "font-weight:" + fw + "; font-style:"
+                + fs + "; background-color:" + document.querySelector("#bg-color").color + "; color:" +
+                document.querySelector("#text-color").color);
         }
     </script>
 </dom-module>
