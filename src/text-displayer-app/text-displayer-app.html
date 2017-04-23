@@ -116,7 +116,7 @@
                 <p></p>
                 <div class="label">Size:</div>
                 <div id="slider">
-                    <paper-slider pin max="50" value="14"></paper-slider>
+                    <paper-slider id="size" pin max="50" value="20"></paper-slider>
                 </div>
                 <p></p>
                 <div class="label">Style:</div>
@@ -163,6 +163,13 @@
                     value: null
                 }
             }
+        });
+
+        document.addEventListener('WebComponentsReady', function () {
+            var size = document.querySelector('#size');
+            size.addEventListener('value-change', function () {
+                document.querySelector("#text-item").setAttribute("style", "font-size:" + size.value + "px");
+            });
         });
     </script>
 </dom-module>
