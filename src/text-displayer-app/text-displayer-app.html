@@ -48,6 +48,15 @@
 
             paper-slider {
                 width: 250px;
+                padding-top: 20px;
+            }
+
+            paper-checkbox {
+                --paper-checkbox-checked-color: transparent;
+                --paper-checkbox-unchecked-color: white;
+                --paper-checkbox-unchecked-ink-color: white;
+                --paper-checkbox-label-color: white;
+                --paper-checkbox-label-checked-color: white;
             }
 
             #text-item {
@@ -83,6 +92,11 @@
                 SIZE:
                 <paper-slider pin max="50" value="14"></paper-slider>
                 <br>
+                STYLE:
+                <p style="word-spacing: 50px;">
+                    <paper-checkbox noink>bold</paper-checkbox>
+                    <paper-checkbox noink>italic</paper-checkbox>
+                </p>
             </div>
             <div class="flex-item" id="text-item">
                 <div>[[inputText]]</div>
