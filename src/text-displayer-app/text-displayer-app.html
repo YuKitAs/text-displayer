@@ -1,6 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-styles/color.html">
+<link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
+<link rel="import" href="../../bower_components/paper-styles/color.html">
+
 
 <dom-module id="text-displayer-app">
     <template>
@@ -14,10 +16,16 @@
                 color: whitesmoke;
             }
 
+            header {
+                text-align: center;
+                padding-top: 20px;
+            }
+
             .flex-container {
                 display: -webkit-flex;
                 display: flex;
                 flex-wrap: nowrap;
+                justify-content: center;
             }
 
             .flex-item {
@@ -35,20 +43,32 @@
 
             paper-dropdown-menu.custom {
                 width: 150px;
-                height: auto;
 
-                --paper-input-container-input: {
+                --paper-input-container-input-color: white;
+
+                --paper-input-container-label: {
                     color: white;
-                };
-
-                --paper-dropdown-menu-input: {
-                    text-transform: uppercase;
-                };
+                    font-family: Ubuntu;
+                    font-size: medium;
+                }
             }
 
             paper-slider {
                 width: 250px;
-                padding-top: 20px;
+                --paper-slider-active-color: #03a9f4;
+                --paper-slider-knob-color: #03a9f4;
+                --paper-slider-pin-color: #03a9f4;
+            }
+
+            .label {
+                display: inline-block;
+                margin-right: 20px;
+                vertical-align: middle;
+            }
+
+            #checkbox {
+                word-spacing: 30px;
+                display: inline-block;
             }
 
             paper-checkbox {
@@ -59,9 +79,14 @@
                 --paper-checkbox-label-checked-color: white;
             }
 
+            #slider, .color-picker {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
             #text-item {
                 display: flex;
-                background-color: #00d6b2;
+                background-color: #03a9f4;
                 width: 400px;
                 max-width: 400px;
                 height: 400px;
@@ -80,23 +105,35 @@
                 <paper-textarea label="Say something" value="{{inputText::change}}" char-counter
                                 maxlength="100">
                 </paper-textarea>
-                <br>
+                <p></p>
                 <paper-dropdown-menu class="custom" label="Font" selected-item-label="{{font}}">
                     <paper-listbox class="dropdown-content">
-                        <paper-item>font1</paper-item>
+                        <paper-item>whatever-font</paper-item>
                         <paper-item>font2</paper-item>
                         <paper-item>font3</paper-item>
                     </paper-listbox>
                 </paper-dropdown-menu>
                 <p></p>
-                SIZE:
-                <paper-slider pin max="50" value="14"></paper-slider>
-                <br>
-                STYLE:
-                <p style="word-spacing: 50px;">
+                <div class="label">Size:</div>
+                <div id="slider">
+                    <paper-slider pin max="50" value="14"></paper-slider>
+                </div>
+                <p></p>
+                <div class="label">Style:</div>
+                <div id="checkbox">
                     <paper-checkbox noink>bold</paper-checkbox>
                     <paper-checkbox noink>italic</paper-checkbox>
-                </p>
+                </div>
+                <p></p>
+                <div class="label">Text color:</div>
+                <div class="color-picker">
+                    <paper-swatch-picker color="white"></paper-swatch-picker>
+                </div>
+                <p></p>
+                <div class="label">Background color:</div>
+                <div class="color-picker">
+                    <paper-swatch-picker color="#03a9f4"></paper-swatch-picker>
+                </div>
             </div>
             <div class="flex-item" id="text-item">
                 <div>[[inputText]]</div>
