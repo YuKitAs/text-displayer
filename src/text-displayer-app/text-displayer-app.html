@@ -1,8 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import"
-      href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
-<link rel="import"
-      href="../../bower_components/paper-elements/paper-elements.html">
+<link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
+<link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 <link rel="import" href="../../bower_components/paper-styles/color.html">
 
 
@@ -96,6 +94,7 @@
                 text-align: center;
                 justify-content: center;
                 word-break: break-all;
+                font-family: Arial;
             }
 
         </style>
@@ -104,24 +103,21 @@
 
         <div class="flex-container">
             <div class="flex-item">
-                <paper-textarea label="Say something"
-                                value="{{inputText::change}}" char-counter
+                <paper-textarea label="Type something" value="{{inputText::change}}" char-counter
                                 maxlength="100">
                 </paper-textarea>
                 <p></p>
                 <paper-dropdown-menu class="custom" label="Font">
-                    <paper-listbox class="dropdown-content" id="font-list"
-                                   selected-item="{{font}}">
-                        <paper-item>Times New Roman</paper-item>
+                    <paper-listbox class="dropdown-content" id="font-list" selected="0">
                         <paper-item>Arial</paper-item>
+                        <paper-item>Times New Roman</paper-item>
                         <paper-item>Courier New</paper-item>
                     </paper-listbox>
                 </paper-dropdown-menu>
                 <p></p>
                 <div class="label">Size:</div>
                 <div id="slider">
-                    <paper-slider id="size" pin max="50"
-                                  value="20"></paper-slider>
+                    <paper-slider id="size" pin max="50" value="20"></paper-slider>
                 </div>
                 <p></p>
                 <div class="label">Style:</div>
@@ -132,14 +128,12 @@
                 <p></p>
                 <div class="label">Text color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker id="text-color"
-                                         color="white"></paper-swatch-picker>
+                    <paper-swatch-picker id="text-color" color="white"></paper-swatch-picker>
                 </div>
                 <br>
                 <div class="label">Background color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker id="bg-color"
-                                         color="#03a9f4"></paper-swatch-picker>
+                    <paper-swatch-picker id="bg-color" color="#03a9f4"></paper-swatch-picker>
                 </div>
             </div>
             <div class="flex-item" id="text-item">[[inputText]]</div>
@@ -156,11 +150,6 @@
                     value: 'Text Displayer'
                 },
                 inputText: {
-                    type: String,
-                    notify: true,
-                    value: null
-                },
-                font: {
                     type: String,
                     notify: true,
                     value: null
