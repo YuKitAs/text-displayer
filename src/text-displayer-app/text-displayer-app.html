@@ -40,9 +40,7 @@
 
             paper-dropdown-menu.custom {
                 width: 180px;
-
                 --paper-input-container-input-color: white;
-
                 --paper-input-container-label: {
                     color: white;
                     font-family: Ubuntu;
@@ -105,6 +103,7 @@
                 height: 35px;
                 background-color: #2d2d2d;
                 color: white;
+                font-size: smaller;
                 --paper-button-raised-keyboard-focus: {
                     background-color: #2d2d2d;
                     color: white !important;
@@ -112,7 +111,9 @@
             }
         </style>
 
-        <header><h1>[[title]]</h1></header>
+        <header><h1>[[title]]</h1>
+            <h3>A simple Polymer Demo<h3>
+        </header>
 
         <div class="flex-container">
             <div class="flex-item">
@@ -158,7 +159,6 @@
                 </div>
             </div>
         </div>
-        <div id="rendered"></div>
     </template>
 
     <script>
@@ -179,48 +179,23 @@
         });
 
         document.addEventListener("WebComponentsReady", function () {
-            document.querySelector("#font-list").addEventListener("iron-select", function () {
-                setStyle();
-            });
-
-            var size = document.querySelector("#size");
-            size.addEventListener("value-change", function () {
-                setStyle();
-            });
-
-            var bold = document.querySelector("#bold");
-            bold.addEventListener("change", function () {
-                setStyle();
-            });
-
-            var italic = document.querySelector("#italic");
-            italic.addEventListener("change", function () {
-                setStyle();
-            });
-
-            document.querySelector("#text-color").addEventListener("color-picker-selected", function () {
-                setStyle();
-            });
-
-            document.querySelector("#bg-color").addEventListener("color-picker-selected", function () {
-                setStyle();
-            });
+            $("#font-list").on("iron-select", setStyle);
+            $("#size").on("value-change", setStyle);
+            $("#bold").on("change", setStyle);
+            $("#italic").on("change", setStyle);
+            $("#text-color").on("color-picker-selected", setStyle);
+            $("#bg-color").on("color-picker-selected", setStyle);
         });
 
         function setStyle() {
-            var textItem = document.querySelector("#text-item");
-
-            var fw = bold.checked ? "bold" : "normal";
-            var fs = italic.checked ? "italic" : "normal";
-
-            textItem.setAttribute("style", "font-size:" + size.value + "px;" + "font-weight:" + fw + "; font-style:"
-                + fs + "; background-color:" + document.querySelector("#bg-color").color + "; color:" +
-                document.querySelector("#text-color").color + "; font-family:" + document.querySelector("#font-list")
-                    .selectedItem.innerText);
+            $("#text-item").attr("style", "font-size:" + size.value + "px;" + "font-weight:" + (bold.checked ? "bold"
+                    : "normal") + "; font-style:" + (italic.checked ? "italic" : "normal") + "; background-color:"
+                + $("#bg-color").prop("color") + "; color:" + $("#text-color").prop("color") + "; font-family:"
+                + $("#font-list").prop("selectedItem").innerText);
         }
 
         function save() {
-            html2canvas($('#text-item'), {
+            html2canvas($("#text-item"), {
                 onrendered: function (canvas) {
                     return Canvas2Image.saveAsJPEG(canvas, 400, 400);
                 }
