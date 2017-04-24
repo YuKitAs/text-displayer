@@ -18,7 +18,7 @@
 
             header {
                 text-align: center;
-                padding-top: 20px;
+                padding-top: 50px;
             }
 
             .flex-container {
@@ -36,9 +36,6 @@
                 width: 300px;
                 max-width: 300px;
                 --paper-input-container-input-color: white;
-                --paper-input-container-label: {
-                    text-transform: uppercase;
-                }
             }
 
             paper-dropdown-menu.custom {
@@ -88,23 +85,24 @@
                 display: flex;
                 background-color: #03a9f4;
                 width: 400px;
-                max-width: 400px;
                 height: 400px;
                 flex-direction: column;
                 text-align: center;
                 justify-content: center;
-                word-break: break-all;
+                word-break: keep-all;
                 font-family: Arial;
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
         </style>
 
-        <header><h2>[[title]]</h2></header>
+        <header><h1>[[title]]</h1></header>
 
         <div class="flex-container">
             <div class="flex-item">
-                <paper-textarea label="Type something" value="{{inputText::change}}" char-counter
-                                maxlength="100">
+                <paper-textarea label="Type something and left-click anywhere" value="{{inputText::change}}"
+                                char-counter maxlength="100">
                 </paper-textarea>
                 <p></p>
                 <paper-dropdown-menu class="custom" label="Font">
