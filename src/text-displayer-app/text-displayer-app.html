@@ -1,8 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
-<link rel="import" href="../../bower_components/paper-styles/color.html">
-
 
 <dom-module id="text-displayer-app">
     <template>
@@ -11,14 +9,20 @@
                 display: block;
             }
 
-            header, div {
+            header {
+                color: whitesmoke;
+                text-align: center;
+                padding-top: 50px;
+                line-height: 30px;
+            }
+
+            h1, div {
                 font-family: Ubuntu;
                 color: whitesmoke;
             }
 
-            header {
-                text-align: center;
-                padding-top: 50px;
+            h3 {
+                font-family: 'Indie Flower', cursive;
             }
 
             .flex-container {
@@ -29,7 +33,7 @@
             }
 
             .flex-item {
-                margin: 150px;
+                margin: 120px;
             }
 
             paper-textarea {
@@ -43,7 +47,7 @@
                 --paper-input-container-input-color: white;
                 --paper-input-container-label: {
                     color: white;
-                    font-family: Ubuntu;
+                    font-family: 'Titillium Web', sans-serif;
                     font-size: medium;
                 }
             }
@@ -59,6 +63,7 @@
                 display: inline-block;
                 margin-right: 20px;
                 vertical-align: middle;
+                font-family: 'Titillium Web', sans-serif;
             }
 
             #checkbox {
@@ -99,20 +104,24 @@
             }
 
             paper-button {
-                width: 50px;
                 height: 35px;
                 background-color: #2d2d2d;
-                color: white;
-                font-size: smaller;
+                color: whitesmoke;
+                font-family: Ubuntu;
+                text-transform: capitalize;
                 --paper-button-raised-keyboard-focus: {
                     background-color: #2d2d2d;
-                    color: white !important;
+                    color: whitesmoke !important;
                 };
+            }
+
+            paper-button:hover {
+                background-color: gray;
             }
         </style>
 
         <header><h1>[[title]]</h1>
-            <h3>A simple Polymer Demo<h3>
+            <h3>[[subtitle]]</h3>
         </header>
 
         <div class="flex-container">
@@ -170,6 +179,10 @@
                     type: String,
                     value: 'Text Displayer'
                 },
+                subtitle: {
+                    type: String,
+                    value: 'A simple Polymer demo'
+                },
                 inputText: {
                     type: String,
                     notify: true,
@@ -197,7 +210,7 @@
         function save() {
             html2canvas($("#text-item"), {
                 onrendered: function (canvas) {
-                    return Canvas2Image.saveAsJPEG(canvas, 400, 400);
+                    return Canvas2Image.saveAsPNG(canvas, 400, 400);
                 }
             });
         }
