@@ -95,6 +95,21 @@
                 padding-right: 20px;
             }
 
+            #button-item {
+                display: flex;
+                justify-content: center;
+            }
+
+            paper-button {
+                width: 50px;
+                height: 35px;
+                background-color: #2d2d2d;
+                color: white;
+                --paper-button-raised-keyboard-focus: {
+                    background-color: #2d2d2d;
+                    color: white !important;
+                };
+            }
         </style>
 
         <header><h1>[[title]]</h1></header>
@@ -134,8 +149,16 @@
                     <paper-swatch-picker id="bg-color" color="#03a9f4"></paper-swatch-picker>
                 </div>
             </div>
-            <div class="flex-item" id="text-item">[[inputText]]</div>
+            <div class="flex-item">
+                <div id="text-item">[[inputText]]</div>
+                <p></p>
+                <div id="button-item">
+                    <paper-button raised id="save" onclick="output ()">save
+                    </paper-button>
+                </div>
+            </div>
         </div>
+        <div id="rendered"></div>
     </template>
 
     <script>
@@ -194,6 +217,14 @@
                 + fs + "; background-color:" + document.querySelector("#bg-color").color + "; color:" +
                 document.querySelector("#text-color").color + "; font-family:" + document.querySelector("#font-list")
                     .selectedItem.innerText);
+        }
+
+        function output() {
+            html2canvas($('#text-item'), {
+                onrendered: function (canvas) {
+                    $('#rendered').append(canvas);
+                }
+            });
         }
     </script>
 </dom-module>
