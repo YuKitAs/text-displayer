@@ -1,0 +1,118 @@
+<dom-module id="shared-styles">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            header {
+                color: whitesmoke;
+                text-align: center;
+                padding-top: 50px;
+                line-height: 30px;
+            }
+
+            h1, div {
+                font-family: Arial;
+                color: whitesmoke;
+            }
+
+            h3 {
+                font-family: 'Indie Flower', cursive;
+            }
+
+            .flex-container {
+                display: -webkit-flex;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+            }
+
+            .flex-item {
+                margin: 120px;
+            }
+
+            paper-textarea {
+                width: 300px;
+                max-width: 300px;
+                --paper-input-container-input-color: white;
+            }
+
+            paper-dropdown-menu.custom {
+                width: 180px;
+                --paper-input-container-input-color: white;
+                --paper-input-container-label: {
+                    color: white;
+                    font-family: 'Titillium Web', sans-serif;
+                    font-size: medium;
+                }
+            }
+
+            paper-slider {
+                width: 250px;
+                --paper-slider-active-color: #03a9f4;
+                --paper-slider-knob-color: #03a9f4;
+                --paper-slider-pin-color: #03a9f4;
+            }
+
+            .label {
+                display: inline-block;
+                margin-right: 20px;
+                vertical-align: middle;
+                font-family: 'Titillium Web', sans-serif;
+            }
+
+            #checkbox {
+                word-spacing: 30px;
+                display: inline-block;
+            }
+
+            paper-checkbox {
+                --paper-checkbox-checked-color: transparent;
+                --paper-checkbox-unchecked-color: white;
+                --paper-checkbox-unchecked-ink-color: white;
+                --paper-checkbox-label-color: white;
+                --paper-checkbox-label-checked-color: white;
+            }
+
+            #slider, .color-picker {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            #text-item {
+                display: flex;
+                background-color: #03a9f4;
+                width: 400px;
+                height: 400px;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                word-break: keep-all;
+                font-family: Arial;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            #button-item {
+                display: flex;
+                justify-content: center;
+            }
+
+            paper-button {
+                height: 35px;
+                background-color: #2d2d2d;
+                color: whitesmoke;
+                text-transform: capitalize;
+                --paper-button-raised-keyboard-focus: {
+                    background-color: #2d2d2d;
+                    color: whitesmoke !important;
+                };
+            }
+
+            paper-button:hover {
+                background-color: gray;
+            }
+        </style>
+    </template>
+</dom-module>
