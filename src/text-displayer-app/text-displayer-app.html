@@ -19,9 +19,9 @@
                 <p></p>
                 <paper-dropdown-menu class="custom" label="Font">
                     <paper-listbox class="dropdown-content" id="font-list" selected="0">
-                        <paper-item>Arial</paper-item>
-                        <paper-item>Times New Roman</paper-item>
-                        <paper-item>Courier New</paper-item>
+                        <template is="dom-repeat" items="{{fonts}}" as="font">
+                            <paper-item>{{font}}</paper-item>
+                        </template>
                     </paper-listbox>
                 </paper-dropdown-menu>
                 <p></p>
@@ -74,6 +74,12 @@
                     type: String,
                     notify: true,
                     value: null
+                },
+                fonts: {
+                    type: Array,
+                    value: function () {
+                        return ["Arial", "Times New Roman", "Courier New"];
+                    }
                 }
             }
         });
