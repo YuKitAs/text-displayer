@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="text-area">
+    <template>
+        <style>
+            paper-textarea {
+                width: 300px;
+                max-width: 300px;
+                --paper-input-container-input-color: white;
+            }
+        </style>
+
+        <paper-textarea label="Type something and left-click anywhere" char-counter maxlength="100">
+        </paper-textarea>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'text-area',
+
+            properties: {
+                inputText: {
+                    type: String,
+                    notify: true,
+                    value: null
+                }
+            }
+        });
+    </script>
+</dom-module>

@@ -2,6 +2,8 @@
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 <link rel="import" href="../shared-styles/shared-styles.html">
+<link rel="import" href="text-area.html">
+<link rel="import" href="dropdown-menu.html">
 
 <dom-module id="text-displayer-app">
     <template>
@@ -13,17 +15,9 @@
 
         <div class="flex-container">
             <div class="flex-item">
-                <paper-textarea label="Type something and left-click anywhere" value="{{inputText::change}}"
-                                char-counter maxlength="100">
-                </paper-textarea>
+                <text-area value="{{inputText::change}}"></text-area>
                 <p></p>
-                <paper-dropdown-menu class="custom" label="Font">
-                    <paper-listbox class="dropdown-content" id="font-list" selected="0">
-                        <template is="dom-repeat" items="{{fonts}}" as="font">
-                            <paper-item>{{font}}</paper-item>
-                        </template>
-                    </paper-listbox>
-                </paper-dropdown-menu>
+                <dropdown-menu></dropdown-menu>
                 <p></p>
                 <div class="label">Size:</div>
                 <div id="slider">
@@ -69,17 +63,6 @@
                 subtitle: {
                     type: String,
                     value: 'A simple Polymer demo'
-                },
-                inputText: {
-                    type: String,
-                    notify: true,
-                    value: null
-                },
-                fonts: {
-                    type: Array,
-                    value: function () {
-                        return ["Arial", "Times New Roman", "Courier New"];
-                    }
                 }
             }
         });

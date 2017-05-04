@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="dropdown-menu">
+    <template>
+        <style>
+            paper-dropdown-menu.custom {
+                width: 180px;
+                --paper-input-container-input-color: white;
+                --paper-input-container-label: {
+                    color: white;
+                    font-family: 'Titillium Web', sans-serif;
+                    font-size: medium;
+                }
+            }
+        </style>
+
+        <paper-dropdown-menu class="custom" label="Font">
+            <paper-listbox class="dropdown-content" id="font-list" selected="0">
+                <template is="dom-repeat" items="{{fonts}}" as="font">
+                    <paper-item>{{font}}</paper-item>
+                </template>
+            </paper-listbox>
+        </paper-dropdown-menu>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'dropdown-menu',
+
+            properties: {
+                fonts: {
+                    type: Array,
+                    value: ["Arial", "Times New Roman", "Courier New"],
+                }
+            }
+        });
+    </script>
+</dom-module>
