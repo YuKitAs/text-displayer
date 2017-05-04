@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>text-area test</title>
+
+    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../../src/text-displayer-app/text-area.html">
+</head>
+<body>
+<test-fixture id="text-area">
+    <template>
+        <text-area></text-area>
+    </template>
+</test-fixture>
+
+<script>
+    suite('text-displayer-app', function () {
+        var textArea;
+
+        setup(function () {
+            textArea = fixture('text-area');
+        });
+
+        test('instantiating text-area works', function () {
+            expect(textArea).to.have.property('inputText');
+        });
+    });
+</script>
+</body>
+</html>
