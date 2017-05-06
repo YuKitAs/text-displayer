@@ -6,8 +6,8 @@
 
     <title>dropdown-menu test</title>
 
-    <script src="../../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../../web-component-tester/browser.js"></script>
+    <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
 
     <link rel="import" href="../../src/text-displayer-app/dropdown-menu.html">
 </head>
@@ -19,15 +19,25 @@
 </test-fixture>
 
 <script>
-    test('dropdown menu has correct items', function () {
-        var dropDownMenu = fixture('dropdown-menu');
-        expect(dropDownMenu).to.have.property('fonts');
-        dropDownMenu.fonts = ["font1", "font2", "font3"];
+    suite('dropdown-menu', function () {
+        var dropdownMenu;
 
-        flush(function () {
-            assert.equals(dropDownMenu.querySelector('template').getAttribute('items').valueOf(), "font1, font2, font3");
-            done();
-        })
+        setup(function () {
+            dropdownMenu = fixture('dropdown-menu');
+        });
+
+        test('instantiating size-slider works', function () {
+            assert.equal(dropdownMenu.is, 'dropdown-menu');
+        });
+
+        test('dropdown menu has correct items', function () {
+            expect(dropdownMenu).to.have.property('fonts');
+            dropdownMenu.fonts = ["font1", "font2", "font3"];
+
+            flush(function () {
+                assert.equals(dropdownMenu.querySelector('template').getAttribute('items').valueOf(), "font1, font2, font3");
+            })
+        });
     });
 </script>
 </body>

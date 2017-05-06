@@ -9,25 +9,20 @@
     <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../bower_components/web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../../src/text-displayer-app/text-area.html">
+    <link rel="import" href="../../src/text-displayer-app/size-slider.html">
 </head>
 <body>
-<test-fixture id="text-area">
+<test-fixture id="size-slider">
     <template>
-        <text-area></text-area>
+        <size-slider></size-slider>
     </template>
 </test-fixture>
 
 <script>
-    suite('text-displayer-app', function () {
-        var textArea;
-
-        setup(function () {
-            textArea = fixture('text-area');
-        });
-
-        test('instantiating text-area works', function () {
-            expect(textArea).to.have.property('inputText');
+    suite('size-slider', function () {
+        test('instantiating size-slider works', function () {
+            var slider = fixture('size-slider');
+            assert.equal(slider.is, 'size-slider');
         });
     });
 </script>

@@ -1,0 +1,22 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="size-slider">
+    <template>
+        <style>
+            paper-slider {
+                width: 250px;
+                --paper-slider-active-color: #03a9f4;
+                --paper-slider-knob-color: #03a9f4;
+                --paper-slider-pin-color: #03a9f4;
+            }
+        </style>
+
+        <paper-slider id="size" pin max="50" value="20"></paper-slider>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'size-slider'
+        });
+    </script>
+</dom-module>

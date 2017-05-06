@@ -4,12 +4,16 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-swatch-picker": "PolymerElements/paper-swatch-picker#^1.0.2",
-    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "web-component-tester": "Polymer/web-component-tester#^5.0.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
     "web-component-tester": "^4.0.0",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "resolutions": {
+    "mocha": "^2.3.0"
   }
 }
