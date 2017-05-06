@@ -16,7 +16,7 @@
 
         <div class="flex-container">
             <div class="flex-item">
-                <text-area value="{{inputText::change}}"></text-area>
+                <text-area value="{{inputText::input}}"></text-area>
                 <p></p>
                 <dropdown-menu></dropdown-menu>
                 <p></p>
@@ -78,7 +78,8 @@
         });
 
         function setStyle() {
-            $("#text-item").attr("style", "font-size:" + size.value + "px;" + "font-weight:" + (bold.checked ? "bold"
+            $("#text-item").attr("style", "font-size:" + size.value + "px;" + "font-weight:" + (bold.checked ?
+                    "bold"
                     : "normal") + "; font-style:" + (italic.checked ? "italic" : "normal") + "; background-color:"
                 + $("#bg-color").prop("color") + "; color:" + $("#text-color").prop("color") + "; font-family:"
                 + $("#font-list").prop("selectedItem").innerText);

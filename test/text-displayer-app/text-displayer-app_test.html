@@ -28,6 +28,8 @@
 
         test('instantiating text-displayer-app works', function () {
             assert.equal(element.is, 'text-displayer-app');
+            assert.equal(element.title, 'Text Displayer');
+            assert.equal(element.subtitle, 'A simple Polymer demo');
         });
 
         test('displaying text works', function (done) {
