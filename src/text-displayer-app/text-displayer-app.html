@@ -2,9 +2,10 @@
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 <link rel="import" href="../shared-styles/shared-styles.html">
-<link rel="import" href="text-area.html">
-<link rel="import" href="dropdown-menu.html">
-<link rel="import" href="size-slider.html">
+<link rel="import" href="paper-elements/text-area.html">
+<link rel="import" href="paper-elements/dropdown-menu.html">
+<link rel="import" href="paper-elements/size-slider.html">
+<link rel="import" href="paper-elements/style-checkbox.html">
 
 <dom-module id="text-displayer-app">
     <template>
@@ -27,8 +28,7 @@
                 <p></p>
                 <div class="label">Style:</div>
                 <div id="checkbox">
-                    <paper-checkbox id="bold" noink>bold</paper-checkbox>
-                    <paper-checkbox id="italic" noink>italic</paper-checkbox>
+                    <style-checkbox></style-checkbox>
                 </div>
                 <p></p>
                 <div class="label">Text color:</div>
@@ -84,6 +84,7 @@
                 + $("#bg-color").prop("color") + "; color:" + $("#text-color").prop("color") + "; font-family:"
                 + $("#font-list").prop("selectedItem").innerText);
         }
+
 
         function save() {
             html2canvas($("#text-item"), {
