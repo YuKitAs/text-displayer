@@ -11,20 +11,14 @@
             }
         </style>
 
-        <paper-slider id="size" pin min="14" max="36" value="{{fontSize}}"></paper-slider>
+        <paper-slider id="font-size" pin min="14" max="36" value="20"></paper-slider>
     </template>
 
     <script>
         Polymer({
             is: 'size-slider',
 
-            properties: {
-                fontSize: {
-                    type: Number,
-                    notify: true,
-                    value: 20
-                }
-            }
+            properties: {}
         });
     </script>
 </dom-module>

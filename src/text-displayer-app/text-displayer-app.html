@@ -70,7 +70,7 @@
 
         document.addEventListener("WebComponentsReady", function () {
             $("#font-list").on("iron-select", setStyle);
-            $("#size").on("value-change", setStyle);
+            $("#font-size").on("value-change", setStyle);
             $("#bold").on("change", setStyle);
             $("#italic").on("change", setStyle);
             $("#text-color").on("color-picker-selected", setStyle);
@@ -78,9 +78,8 @@
         });
 
         function setStyle() {
-            $("#text-item").attr("style", "font-size:" + size.value + "px;" + "font-weight:" + (bold.checked ?
-                    "bold"
-                    : "normal") + "; font-style:" + (italic.checked ? "italic" : "normal") + "; background-color:"
+            $("#text-item").attr("style", "font-size:" + $("#font-size").prop("value") + "px;" + "font-weight:" + (bold.checked ?
+                    "bold" : "normal") + "; font-style:" + (italic.checked ? "italic" : "normal") + "; background-color:"
                 + $("#bg-color").prop("color") + "; color:" + $("#text-color").prop("color") + "; font-family:"
                 + $("#font-list").prop("selectedItem").innerText);
         }

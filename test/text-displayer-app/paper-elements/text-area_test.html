@@ -27,7 +27,7 @@
         });
 
         test('instantiating text-area works', function () {
-            expect(textArea).to.have.property('inputText');
+            assert.equal(textArea.is, 'text-area');
         });
     });
 </script>
