@@ -23,7 +23,7 @@
                 <p></p>
                 <div class="label">Size:</div>
                 <div id="slider">
-                    <size-slider></size-slider>
+                    <size-slider size="{{fontSize}}"></size-slider>
                 </div>
                 <p></p>
                 <div class="label">Style:</div>
@@ -64,26 +64,32 @@
                 subtitle: {
                     type: String,
                     value: 'A simple Polymer demo'
+                },
+                fontSize: {
+                    type: Number
                 }
+            },
+
+            ready: function () {
+                document.addEventListener("WebComponentsReady", function () {
+                    $("#font-list").on("iron-select", setStyle);
+                    $("#font-size").on("value-change", setStyle);
+                    $("#bold").on("change", setStyle);
+                    $("#italic").on("change", setStyle);
+                    $("#text-color").on("color-picker-selected", setStyle);
+                    $("#bg-color").on("color-picker-selected", setStyle);
+                });
             }
         });
 
-        document.addEventListener("WebComponentsReady", function () {
-            $("#font-list").on("iron-select", setStyle);
-            $("#font-size").on("value-change", setStyle);
-            $("#bold").on("change", setStyle);
-            $("#italic").on("change", setStyle);
-            $("#text-color").on("color-picker-selected", setStyle);
-            $("#bg-color").on("color-picker-selected", setStyle);
-        });
-
         function setStyle() {
-            $("#text-item").attr("style", "font-size:" + $("#font-size").prop("value") + "px;" + "font-weight:" + (bold.checked ?
+            var app = $('text-displayer-app');
+
+            $("#text-item").attr("style", "font-size:" + app.prop("fontSize") + "px;" + "font-weight:" + (bold.checked ?
                     "bold" : "normal") + "; font-style:" + (italic.checked ? "italic" : "normal") + "; background-color:"
                 + $("#bg-color").prop("color") + "; color:" + $("#text-color").prop("color") + "; font-family:"
                 + $("#font-list").prop("selectedItem").innerText);
         }
-
 
         function save() {
             html2canvas($("#text-item"), {
