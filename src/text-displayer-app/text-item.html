@@ -1,0 +1,43 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="text-item">
+    <template>
+        <style>
+            :host {
+                display: flex;
+                width: 400px;
+                height: 400px;
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                word-break: keep-all;
+                overflow-wrap: break-word;
+                padding-left: 20px;
+                padding-right: 20px;
+                background-color: var(--text-item-background-color, #03a9f4);
+            }
+
+            .text {
+                font-family: var(--text-font-family, Arial);
+                font-size: var(--text-font-size);
+                font-weight: var(--text-font-weight);
+                font-style: var(--text-font-style);
+                color: var(--text-color);
+            }
+        </style>
+
+        <div class="text">[[inputText]]</div>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'text-item',
+
+            properties: {
+                inputText: {
+                    type: String
+                }
+            }
+        });
+    </script>
+</dom-module>
