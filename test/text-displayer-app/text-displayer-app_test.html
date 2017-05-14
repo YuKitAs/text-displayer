@@ -41,6 +41,11 @@
                 done();
             })
         });
+
+        test('size-slider data binding works', function () {
+            element.querySelector('paper-slider').value = 20;
+            assert.equal(element.fontSize, 20);
+        })
     });
 </script>
 </body>

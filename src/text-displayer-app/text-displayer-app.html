@@ -2,10 +2,8 @@
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 <link rel="import" href="../shared-styles/shared-styles.html">
-<link rel="import" href="paper-elements/text-area.html">
 <link rel="import" href="paper-elements/dropdown-menu.html">
-<link rel="import" href="paper-elements/size-slider.html">
-<link rel="import" href="paper-elements/style-checkbox.html">
+<link rel="import" href="text-item.html">
 
 <dom-module id="text-displayer-app">
     <template>
@@ -17,35 +15,39 @@
 
         <div class="flex-container">
             <div class="flex-item">
-                <text-area value="{{inputText::input}}"></text-area>
+                <paper-textarea label="Type something here" char-counter maxlength="80" value="{{inputText::input}}">
+                </paper-textarea>
                 <p></p>
-                <dropdown-menu></dropdown-menu>
+                <dropdown-menu on-iron-select="setStyle"></dropdown-menu>
                 <p></p>
                 <div class="label">Size:</div>
                 <div id="slider">
-                    <size-slider size="{{fontSize}}"></size-slider>
+                    <paper-slider pin min="14" max="36" value="{{fontSize}}" on-value-change="setStyle"></paper-slider>
                 </div>
                 <p></p>
                 <div class="label">Style:</div>
                 <div id="checkbox">
-                    <style-checkbox></style-checkbox>
+                    <paper-checkbox id="bold" noink on-change="setStyle">bold</paper-checkbox>
+                    <paper-checkbox id="italic" noink on-change="setStyle">italic</paper-checkbox>
                 </div>
                 <p></p>
                 <div class="label">Text color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker id="text-color" color="white"></paper-swatch-picker>
+                    <paper-swatch-picker id="text-color" color="white"
+                                         on-color-picker-selected="setStyle"></paper-swatch-picker>
                 </div>
                 <br>
                 <div class="label">Background color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker id="bg-color" color="#03a9f4"></paper-swatch-picker>
+                    <paper-swatch-picker id="bg-color" color="#03a9f4"
+                                         on-color-picker-selected="setStyle"></paper-swatch-picker>
                 </div>
             </div>
             <div class="flex-item">
-                <div id="text-item">[[inputText]]</div>
+                <text-item input-text="{{inputText}}"></text-item>
                 <p></p>
                 <div id="button-item">
-                    <paper-button raised id="save" onclick="save ()">save
+                    <paper-button raised id="save" on-tap="save">save
                     </paper-button>
                 </div>
             </div>
@@ -66,37 +68,29 @@
                     value: 'A simple Polymer demo'
                 },
                 fontSize: {
-                    type: Number
+                    type: Number,
+                    value: 20
                 }
             },
 
-            ready: function () {
-                document.addEventListener("WebComponentsReady", function () {
-                    $("#font-list").on("iron-select", setStyle);
-                    $("#font-size").on("value-change", setStyle);
-                    $("#bold").on("change", setStyle);
-                    $("#italic").on("change", setStyle);
-                    $("#text-color").on("color-picker-selected", setStyle);
-                    $("#bg-color").on("color-picker-selected", setStyle);
+            setStyle: function () {
+                this.customStyle['--text-font-size'] = this.fontSize + 'px';
+                this.customStyle['--text-font-family'] = $("#font-list").prop("selectedItem").innerText;
+                this.customStyle['--text-font-weight'] = bold.checked ? "bold" : "normal";
+                this.customStyle['--text-font-style'] = italic.checked ? "italic" : "normal";
+                this.customStyle['--text-color'] = $("#text-color").prop("color");
+                this.customStyle['--text-item-background-color'] = $("#bg-color").prop("color");
+
+                this.updateStyles();
+            },
+
+            save: function () {
+                html2canvas($("text-item"), {
+                    onrendered: function (canvas) {
+                        return Canvas2Image.saveAsPNG(canvas, 400, 400);
+                    }
                 });
             }
         });
-
-        function setStyle() {
-            var app = $('text-displayer-app');
-
-            $("#text-item").attr("style", "font-size:" + app.prop("fontSize") + "px;" + "font-weight:" + (bold.checked ?
-                    "bold" : "normal") + "; font-style:" + (italic.checked ? "italic" : "normal") + "; background-color:"
-                + $("#bg-color").prop("color") + "; color:" + $("#text-color").prop("color") + "; font-family:"
-                + $("#font-list").prop("selectedItem").innerText);
-        }
-
-        function save() {
-            html2canvas($("#text-item"), {
-                onrendered: function (canvas) {
-                    return Canvas2Image.saveAsPNG(canvas, 400, 400);
-                }
-            });
-        }
     </script>
 </dom-module>
