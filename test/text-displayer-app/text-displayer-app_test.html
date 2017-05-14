@@ -37,7 +37,7 @@
             element.inputText = 'Hello world!';
 
             flush(function () {
-                assert.equal(element.querySelector('#text-item').innerText, 'Hello world!');
+                assert.equal(element.querySelector('text-item').innerText, 'Hello world!\n');
                 done();
             })
         });
@@ -45,7 +45,24 @@
         test('size-slider data binding works', function () {
             element.querySelector('paper-slider').value = 20;
             assert.equal(element.fontSize, 20);
-        })
+        });
+
+        test('checkbox data binding works', function () {
+            element.querySelector('#bold').checked = true;
+            element.querySelector('#italic').checked = true;
+            assert.isTrue(element.bold);
+            assert.isTrue(element.italic);
+        });
+
+        test('text-color data binding works', function () {
+            element.querySelector('#text-color').color = 'blue';
+            assert.equal(element.textColor, 'blue');
+        });
+
+        test('bg-color data binding works', function () {
+            element.querySelector('#bg-color').color = 'red';
+            assert.equal(element.bgColor, 'red');
+        });
     });
 </script>
 </body>

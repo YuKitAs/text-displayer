@@ -27,19 +27,19 @@
                 <p></p>
                 <div class="label">Style:</div>
                 <div id="checkbox">
-                    <paper-checkbox id="bold" noink on-change="setStyle">bold</paper-checkbox>
-                    <paper-checkbox id="italic" noink on-change="setStyle">italic</paper-checkbox>
+                    <paper-checkbox id="bold" noink checked="{{bold}}" on-change="setStyle">bold</paper-checkbox>
+                    <paper-checkbox id="italic" noink checked="{{italic}}" on-change="setStyle">italic</paper-checkbox>
                 </div>
                 <p></p>
                 <div class="label">Text color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker id="text-color" color="white"
+                    <paper-swatch-picker id="text-color" color="{{textColor}}"
                                          on-color-picker-selected="setStyle"></paper-swatch-picker>
                 </div>
                 <br>
                 <div class="label">Background color:</div>
                 <div class="color-picker">
-                    <paper-swatch-picker id="bg-color" color="#03a9f4"
+                    <paper-swatch-picker id="bg-color" color="{{bgColor}}"
                                          on-color-picker-selected="setStyle"></paper-swatch-picker>
                 </div>
             </div>
@@ -70,16 +70,28 @@
                 fontSize: {
                     type: Number,
                     value: 20
+                },
+                bold: {
+                    type: Boolean
+                },
+                italic: {
+                    type: Boolean
+                },
+                textColor: {
+                    type: String
+                },
+                bgColor: {
+                    type: String
                 }
             },
 
             setStyle: function () {
                 this.customStyle['--text-font-size'] = this.fontSize + 'px';
-                this.customStyle['--text-font-family'] = $("#font-list").prop("selectedItem").innerText;
-                this.customStyle['--text-font-weight'] = bold.checked ? "bold" : "normal";
-                this.customStyle['--text-font-style'] = italic.checked ? "italic" : "normal";
-                this.customStyle['--text-color'] = $("#text-color").prop("color");
-                this.customStyle['--text-item-background-color'] = $("#bg-color").prop("color");
+                //this.customStyle['--text-font-family'] = document.querySelector("#font-list").selectedItem.innerText;
+                this.customStyle['--text-font-weight'] = this.bold ? "bold" : "normal";
+                this.customStyle['--text-font-style'] = this.italic ? "italic" : "normal";
+                this.customStyle['--text-color'] = this.textColor;
+                this.customStyle['--text-item-background-color'] = this.bgColor;
 
                 this.updateStyles();
             },
