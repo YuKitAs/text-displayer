@@ -19,23 +19,23 @@
 </test-fixture>
 
 <script>
-    suite('dropdown-menu', function () {
+    suite("dropdown-menu", function () {
         var dropdownMenu;
 
         setup(function () {
-            dropdownMenu = fixture('dropdown-menu');
+            dropdownMenu = fixture("dropdown-menu");
         });
 
-        test('instantiating size-slider works', function () {
-            assert.equal(dropdownMenu.is, 'dropdown-menu');
+        test("instantiating size-slider works", function () {
+            assert.equal(dropdownMenu.is, "dropdown-menu");
         });
 
-        test('dropdown menu has correct item numbers', function (done) {
-            expect(dropdownMenu).to.have.property('fonts');
+        test("dropdown menu has correct item numbers", function (done) {
+            expect(dropdownMenu).to.have.property("fonts");
 
             dropdownMenu.fonts = ["font1", "font2", "font3"];
             flush(function () {
-                assert.equal(dropdownMenu.querySelector('template').items.length, 3);
+                assert.equal(dropdownMenu.querySelector("template").items.length, 3);
                 done();
             })
         });

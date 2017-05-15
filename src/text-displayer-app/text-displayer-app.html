@@ -56,16 +56,16 @@
 
     <script>
         Polymer({
-            is: 'text-displayer-app',
+            is: "text-displayer-app",
 
             properties: {
                 title: {
                     type: String,
-                    value: 'Text Displayer'
+                    value: "Text Displayer"
                 },
                 subtitle: {
                     type: String,
-                    value: 'A simple Polymer demo'
+                    value: "A simple Polymer demo"
                 },
                 fontSize: {
                     type: Number,
@@ -86,7 +86,7 @@
             },
 
             setStyle: function () {
-                this.customStyle['--text-font-size'] = this.fontSize + 'px';
+                this.customStyle['--text-font-size'] = this.fontSize + "px";
                 this.customStyle['--text-font-family'] = this.selectedFont;
                 this.customStyle['--text-font-weight'] = this.bold ? "bold" : "normal";
                 this.customStyle['--text-font-style'] = this.italic ? "italic" : "normal";

@@ -23,65 +23,65 @@
 </test-fixture>
 
 <script>
-    suite('text-displayer-app', function () {
+    suite("text-displayer-app", function () {
         var app;
 
         setup(function () {
             app = fixture('basic');
         });
 
-        test('instantiating text-displayer-app works', function () {
-            assert.equal(app.is, 'text-displayer-app');
-            assert.equal(app.title, 'Text Displayer');
-            assert.equal(app.subtitle, 'A simple Polymer demo');
+        test("instantiating text-displayer-app works", function () {
+            assert.equal(app.is, "text-displayer-app");
+            assert.equal(app.title, "Text Displayer");
+            assert.equal(app.subtitle, "A simple Polymer demo");
         });
 
-        test('displaying text works', function () {
-            expect(app).to.have.property('inputText');
+        test("displaying text works", function () {
+            expect(app).to.have.property("inputText");
 
-            app.inputText = 'Hello world!';
-            assert.equal(app.querySelector('text-item').innerText, 'Hello world!\n');
+            app.inputText = "Hello world!";
+            assert.equal(app.querySelector("text-item").innerText, "Hello world!\n");
         });
 
-        test('binding font size works', function () {
-            expect(app).to.have.property('fontSize');
+        test("binding font size works", function () {
+            expect(app).to.have.property("fontSize");
 
-            app.querySelector('paper-slider').value = 20;
+            app.querySelector("paper-slider").value = 20;
             assert.equal(app.fontSize, 20);
 
-            app.querySelector('paper-slider').value = 42;
+            app.querySelector("paper-slider").value = 42;
             assert.equal(app.fontSize, 36);
         });
 
-        test('binding font style works', function () {
-            app.querySelector('#bold').checked = true;
+        test("binding font style works", function () {
+            app.querySelector("#bold").checked = true;
             assert.isTrue(app.bold);
 
-            app.querySelector('#italic').checked = true;
+            app.querySelector("#italic").checked = true;
             assert.isTrue(app.italic);
         });
 
         test('binding text color works', function () {
-            app.querySelector('#text-color').color = 'blue';
-            assert.equal(app.textColor, 'blue');
+            app.querySelector("#text-color").color = "blue";
+            assert.equal(app.textColor, "blue");
         });
 
-        test('binding background color works', function () {
-            app.querySelector('#bg-color').color = 'red';
-            assert.equal(app.bgColor, 'red');
+        test("binding background color works", function () {
+            app.querySelector("#bg-color").color = "red";
+            assert.equal(app.bgColor, "red");
         });
 
-        test('binding font family works', function (done) {
-            expect(app).to.have.property('selectedFont');
+        test("binding font family works", function (done) {
+            expect(app).to.have.property("selectedFont");
 
             flush(function () {
-                assert.equal(app.selectedFont, 'Arial');
+                assert.equal(app.selectedFont, "Arial");
                 done();
             })
         });
 
-        test('button works', function () {
-            var button = app.querySelector('#save');
+        test("button works", function () {
+            var button = app.querySelector("#save");
             button.toggles = true;
             button.click();
             expect(button.active).to.be.true;
