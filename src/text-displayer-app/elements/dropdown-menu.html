@@ -14,7 +14,7 @@
             }
         </style>
 
-        <paper-dropdown-menu class="custom" label="Font">
+        <paper-dropdown-menu id="hello" class="custom" label="Font" selected-item-label="{{selectedFont}}">
             <paper-listbox class="dropdown-content" id="font-list" selected="0">
                 <template is="dom-repeat" items="{{fonts}}" as="font">
                     <paper-item>{{font}}</paper-item>
@@ -22,7 +22,6 @@
             </paper-listbox>
         </paper-dropdown-menu>
     </template>
-
     <script>
         Polymer({
             is: 'dropdown-menu',
@@ -30,7 +29,11 @@
             properties: {
                 fonts: {
                     type: Array,
-                    value: ["Arial", "Times New Roman", "Courier New"],
+                    value: ["Arial", "Times New Roman", "Courier New"]
+                },
+                selectedFont: {
+                    type: String,
+                    notify: true
                 }
             }
         });

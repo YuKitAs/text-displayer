@@ -2,8 +2,8 @@
 <link rel="import" href="../../bower_components/paper-swatch-picker/paper-swatch-picker.html">
 <link rel="import" href="../../bower_components/paper-elements/paper-elements.html">
 <link rel="import" href="../shared-styles/shared-styles.html">
-<link rel="import" href="paper-elements/dropdown-menu.html">
-<link rel="import" href="text-item.html">
+<link rel="import" href="elements/dropdown-menu.html">
+<link rel="import" href="elements/text-item.html">
 
 <dom-module id="text-displayer-app">
     <template>
@@ -18,15 +18,15 @@
                 <paper-textarea label="Type something here" char-counter maxlength="80" value="{{inputText::input}}">
                 </paper-textarea>
                 <p></p>
-                <dropdown-menu on-iron-select="setStyle"></dropdown-menu>
+                <dropdown-menu selected-font="{{selectedFont}}" on-iron-select="setStyle"></dropdown-menu>
                 <p></p>
                 <div class="label">Size:</div>
-                <div id="slider">
+                <div class="slider">
                     <paper-slider pin min="14" max="36" value="{{fontSize}}" on-value-change="setStyle"></paper-slider>
                 </div>
                 <p></p>
                 <div class="label">Style:</div>
-                <div id="checkbox">
+                <div class="checkbox">
                     <paper-checkbox id="bold" noink checked="{{bold}}" on-change="setStyle">bold</paper-checkbox>
                     <paper-checkbox id="italic" noink checked="{{italic}}" on-change="setStyle">italic</paper-checkbox>
                 </div>
@@ -46,7 +46,7 @@
             <div class="flex-item">
                 <text-item input-text="{{inputText}}"></text-item>
                 <p></p>
-                <div id="button-item">
+                <div class="button-item">
                     <paper-button raised id="save" on-tap="save">save
                     </paper-button>
                 </div>
@@ -87,7 +87,7 @@
 
             setStyle: function () {
                 this.customStyle['--text-font-size'] = this.fontSize + 'px';
-                //this.customStyle['--text-font-family'] = document.querySelector("#font-list").selectedItem.innerText;
+                this.customStyle['--text-font-family'] = this.selectedFont;
                 this.customStyle['--text-font-weight'] = this.bold ? "bold" : "normal";
                 this.customStyle['--text-font-style'] = this.italic ? "italic" : "normal";
                 this.customStyle['--text-color'] = this.textColor;

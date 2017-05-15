@@ -9,7 +9,7 @@
     <script src="../../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../../bower_components/web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../../../src/text-displayer-app/paper-elements/dropdown-menu.html">
+    <link rel="import" href="../../../src/text-displayer-app/elements/dropdown-menu.html">
 </head>
 <body>
 <test-fixture id="dropdown-menu">
@@ -30,12 +30,13 @@
             assert.equal(dropdownMenu.is, 'dropdown-menu');
         });
 
-        test('dropdown menu has correct items', function () {
+        test('dropdown menu has correct item numbers', function (done) {
             expect(dropdownMenu).to.have.property('fonts');
-            dropdownMenu.fonts = ["font1", "font2", "font3"];
 
+            dropdownMenu.fonts = ["font1", "font2", "font3"];
             flush(function () {
-                assert.equals(dropdownMenu.querySelector('template').getAttribute('items').valueOf(), "font1, font2, font3");
+                assert.equal(dropdownMenu.querySelector('template').items.length, 3);
+                done();
             })
         });
     });
